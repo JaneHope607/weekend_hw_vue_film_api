@@ -1,10 +1,20 @@
 <template>
-  
+  <div v-if="film" class="wrapper">
+      <div class="film details">
+          <h3>Title: {{ film.title }}</h3>
+          <p>Description {{ film.description }}</p>
+          <p>Director: {{ film.director }}</p>
+          <p>Producer: {{ film.producer }}</p>
+          <p>Release Date: {{ film.release_date }}</p>
+          <p>Rotten Tomatoes Score: {{ film.rt_score }}</p>
+      </div>  
+  </div>
 </template>
 
 <script>
 export default {
-
+    name: "film-details",
+    props: ["film"]
 }
 </script>
 

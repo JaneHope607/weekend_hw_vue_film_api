@@ -3,12 +3,14 @@
     <h1>Films</h1>
     <div>
       <film-select :films="films"/>
+      <film-details/>
     </div>
   </div>
 </template>
 
 <script>
 import FilmSelect from '@/components/FilmSelect';
+import FilmDetails from '@/components/FilmDetails';
 
 export default {
   name: 'app',
@@ -26,7 +28,8 @@ export default {
   },
 
   components: {
-    'film-select': FilmSelect
+    'film-select': FilmSelect,
+    'film-details': FilmDetails
   }
 }
 </script>
