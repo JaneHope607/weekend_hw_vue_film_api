@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div id="app">
     <h1>Studio Ghibli Films</h1>
-    <div>
-      <!-- <film-select :films="films"></film-select> -->
+    <search-films></search-films>
+    <div class="list-info">
       <film-list :films="films"></film-list>
       <film-details v-if="selectedFilm" :film="selectedFilm"></film-details>
     </div>
@@ -10,10 +10,11 @@
 </template>
 
 <script>
-import FilmSelect from '@/components/FilmSelect';
-import FilmList from '@/components/FilmList';
-import FilmDetails from '@/components/FilmDetails';
 import { eventBus } from './main.js';
+
+import FilmList from './components/FilmList';
+import FilmDetails from './components/FilmDetails';
+import FilmSearch from './components/FilmSearch.vue';
 
 export default {
   name: 'app',
@@ -21,7 +22,7 @@ export default {
     return {
       films: [],
       selectedFilm: null
-    };
+    }
   },
 
   mounted() {
@@ -30,17 +31,28 @@ export default {
       .then(data => this.films = data)
       .catch(err => console.log(err));
 
-      eventBus.$on('film-select', film => (this.selectedFilm = film));
+      eventBus.$on('film-select', (film) => {
+        this.selectedFilm = film
+      });
+
   },
 
   components: {
     'film-list': FilmList,
-    'film-select': FilmSelect,
-    'film-details': FilmDetails
+    'film-details': FilmDetails,
+    'search-films': FilmSearch
   }
 }
 </script>
 
-<style>
+<style lang="css" scoped>
 
+.list-info {
+  display: inline-flex;
+  background-color: rgb(97, 161, 204);
+}
+
+#app {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 </style>

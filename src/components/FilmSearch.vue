@@ -1,39 +1,44 @@
 <template>
-    <div class="search-bar">
-        <input type="text" v-model="searchQuery" placeholder="Search film by title..." v-on:keyup="searchForFilm" >
-    </div>
+        <div class="search-bar">
+            <input type="text" id="search-bar-input" v-model="searchQuery" placeholder="Search film by title..." v-on:input="handleInput"/>
+        </div>
 </template>
 
 <script>
-import { eventBus } from '@/main.js'; 
+import { eventBus } from '../main.js'; 
 
 export default {
     name: "search-films",
     data() {
         return {
-            searchQuery: "",
-            selectedFilm: {}
-        };
+            searchQuery: ""
+        }
     },
-    props: ['films'],
-    
+    props: ["films"],
+
     mounted() {
-        this.searchForFilm();
+        this.handleInput();
     },
 
     methods: {
-        searchForFilm() {
-            let foundFilm = this.films.find((film) => {
-                return film.title.toLowerCase().indexOf(this.searchQuery.toLowerCase()) > -1
-            })
-            this.selectedFilm = foundFilm
-
-            eventBus.$emit('film-selected', this.selectedFilm)
-        }
-    }
-}
+        handleInput() {
+            eventBus.$emit('search-films', this.searchQuery);
+        },
+    },
+};
 </script>
 
 <style>
+
+.search-bar {
+    margin: 15px;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
 
 </style>

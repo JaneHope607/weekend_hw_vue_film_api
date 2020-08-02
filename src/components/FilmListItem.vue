@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { eventBus } from "@/main.js"
+import { eventBus } from "../main.js"
 
 export default {
     name: "film-list-item",
@@ -19,6 +19,26 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    .filmlistitem {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        width: 150px;
+        border-radius: 20px;
+        background-color: white;
+        text-align: center;
+        margin: 10px;
+
+    }
+    button {
+        list-style: none;
+        margin: 10px;
+        text-decoration: none;
+        background-color: #333333;
+        color: white;
+        padding: 2px 6px 2px 6px;
+    }
 
 </style>
