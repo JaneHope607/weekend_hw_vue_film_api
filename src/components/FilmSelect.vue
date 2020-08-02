@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         handleSelect() {
-            eventBus.$emit('film-select', this.selectedFilm)        }
+            eventBus.$emit('film-selected', this.selectedFilm)        }
     }
 };
 </script>
