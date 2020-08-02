@@ -49,7 +49,7 @@ export default {
 
 .list-info {
   display: inline-flex;
-  background-color: rgb(97, 161, 204);
+  background-color: rgb(204, 196, 147);
 }
 
 #app {
