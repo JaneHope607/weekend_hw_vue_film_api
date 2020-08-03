@@ -29,7 +29,7 @@ export default {
 
     methods: {
       filmsIncludedSearch (film) {
-        if (film.title.toLowerCase().indexOf(this.searchedTerm.toLowerCase()) > -1 ) {
+        if (film.title.toLowerCase().includes(this.searchedTerm.toLowerCase())) {
           return true;
         } 
         return false;
