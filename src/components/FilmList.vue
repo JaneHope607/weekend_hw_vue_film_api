@@ -33,10 +33,6 @@ export default {
           return true;
         } 
         return false;
-    //     if (film.title.includes(this.searchedTerm)) {
-    //       return true;
-    //   }
-    //     return false;
     }
 },
 
